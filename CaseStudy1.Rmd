@@ -2,12 +2,14 @@
 title: "CaseStudy1"
 author: "Jonathan Flores"
 date: "February 12, 2018"
-output: html_document
+output: 
+  md_document:
+    variant: markdown_github
 ---
 
 ## Source Documents
 
-``` {r echo=TRUE, results='asis'}
+``` {r echo=TRUE, comment=NA, results='asis'}
 
 ## Saved the csv documents on GitHub, the code below process information from GitHub instead of our local computers.
 
@@ -29,12 +31,12 @@ Breweries <- data.frame(read.csv(text = getURL("https://raw.githubusercontent.co
 
 ## Renaming Beer columns
 
-colnames(Beers) <- c("Beer Name", "Beer_ID", "ABV", "IBU", "Brewery_ID","Beet Style", "Ounces")
+colnames(Beers) <- c("BeerName", "BeerID", "ABV", "IBU", "BreweryID","BeerStyle", "Ounces")
 
 
 ## Renaming Breweries columns
 
-colnames(Breweries) <- c("Brew_ID", "Brewery Name", "Brewery City", "Brewery State")
+colnames(Breweries) <- c("BreweryID", "BreweryName", "BreweryCity", "BreweryState")
 
 ```
 
@@ -53,21 +55,30 @@ knitr::kable(head(Breweries))
 
 ```
 
-##1. How many breweries are present in each state?
+## 1. How many breweries are present in each state?
 
 
-``` {r echo=TRUE, results='asis'}
+``` {r echo=TRUE,results='asis'}
 
+## Displaing table with States (two letter) and the number of Breweries per State
 
+kable(data.frame(table(Breweries$BreweryState)),col.names=c("State","Number of Breweries"))
 
 ```
 
 
-##2. Merge beer data with the breweries data. Print the first 6 observations and the last six observations to check the merged file.
+## 2. Merge beer data with the breweries data. Print the first 6 observations and the last six observations to check the merged file.
 
 ``` {r echo=TRUE, results='asis'}
 
+## Mergin dataframe Brewwries and Beers by "BreweryID" and assinging to object BeerBreweries
 
+BeerBreweries <- merge(Beers, Breweries, by="BreweryID")
+
+## Displaying table with first 6 and last 6 observertions of the merged file.
+
+knitr::kable(rbind(head(BeerBreweries),tail(BeerBreweries)))  
+                        
 ```
 
 
@@ -76,22 +87,73 @@ knitr::kable(head(Breweries))
 
 ``` {r echo=TRUE, results='asis'}
 
+## Displaying table with columns and the number of NA's on each column
+
+kable(sapply(data.frame(sapply(BeerBreweries, is.na)),sum),col.names="Number of NA's")
 
 ```
 
 
 ## 4. Compute the median alcohol content and international bitterness unit for each state. Plot a bar chart to compare.
 
-``` {r echo=TRUE, results='asis'}
+``` {r echo=TRUE, results='asis', fig.height = 10, fig.width = 10}
 
+## Tidying data for ABV
+## 1st, eliminate rows with NA's in ABV
+
+ABVwoNA <- BeerBreweries[-which(is.na(BeerBreweries$ABV)),]
+
+## Calculate median alcohol content by state and assign to object ABVbyState, create 
+
+ABVbyState <- tapply(ABVwoNA$ABV, ABVwoNA$BreweryState, median)
+
+## Displying bar char of median alcohol content by state
+
+par(las=2)
+barplot(ABVbyState, main="Median Alcohol Content by State", horiz=TRUE, xlab="Median Alcohol Content", ylab="State", cex.names=0.4)
+```
+
+``` {r echo=TRUE, results='asis', fig.height = 10, fig.width = 10}
+## Tidying data for IBU
+## 1st, eliminate rows with NA's in IBU
+
+IBUwoNA <- BeerBreweries[-which(is.na(BeerBreweries$IBU)),]
+
+## Calculate international bitterness unit content by state and assign to object IBUbyState
+
+IBUbyState <- tapply(IBUwoNA$IBU, IBUwoNA$BreweryState, median)
+
+
+## Displying bar char of international bitternes unit by state
+
+par(las=2)
+barplot(IBUbyState, main="Median International Bitteness Unit by State", horiz=TRUE, xlab="Median International Bitterness Unit", ylab="State", cex.names=0.4)
 
 ```
 
 
+
 ## 5. Which state has the maximum alcoholic (ABV) beer? Which state has the most bitter (IBU) beer?
 
+#### The states with the maximun alcoholic beer are
 ``` {r echo=TRUE, results='asis'}
 
+## Display which state has the maximun ABV beer
+
+cat(names(ABVbyState[which(ABVbyState==max(ABVbyState))]))
+
+```
+
+#### and the state with the most bitter beer is
+``` {r echo=TRUE,results='asis' }
+## Tidy data for IBU
+
+IBUbyState <- IBUbyState[-which(is.na(IBUbyState))]
+
+
+## Display which state has the most IBU beer
+
+cat(names(IBUbyState[which(IBUbyState==max(IBUbyState))]))
 
 ```
 
@@ -101,13 +163,28 @@ knitr::kable(head(Breweries))
 
 ``` {r echo=TRUE, results='asis'}
 
+##Generate statical sumamry for the ABV variable
+
+kable(rbind(summary(ABVwoNA$ABV)))
 
 ```
 
 
 ## 7. Is there an apparent relationship between the bitterness of the beer and its alcoholic content? Draw a scatter plot.
 
-``` {r echo=TRUE, results='asis'}
+#### As can be observed in the figure below...
 
+``` {r echo=TRUE, results='asis',fig.height = 10, fig.width = 10}
 
+## Tidying up BeerBrewery data frame
+
+BBnoNA <- ABVwoNA[-which(is.na(ABVwoNA$IBU)),]
+
+## Loading ggplot2 to draw graphics
+
+library(ggplot2)
+
+## Displaying IBU vs. ABV scatter plot
+
+ggplot(BBnoNA, aes(x=IBU,y=ABV))+geom_point()+ggtitle("Bitterness of Beer vs. Alcoholic Content")
 ```
