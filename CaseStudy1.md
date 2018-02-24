@@ -9,7 +9,7 @@ require(RCurl)
 
     Loading required package: RCurl
 
-    Warning: package 'RCurl' was built under R version 3.3.3
+    Warning: package 'RCurl' was built under R version 3.4.3
 
     Loading required package: bitops
 
@@ -42,13 +42,18 @@ colnames(Breweries) <- c("BreweryID", "BreweryName", "BreweryCity", "BreweryStat
 
 
 library(knitr)
+```
+
+    ## Warning: package 'knitr' was built under R version 3.4.3
+
+``` r
 knitr::kable(head(Beers))
 ```
 
 | BeerName            |  BeerID|    ABV|  IBU|  BreweryID| BeerStyle                      |  Ounces|
 |:--------------------|-------:|------:|----:|----------:|:-------------------------------|-------:|
 | Pub Beer            |    1436|  0.050|   NA|        409| American Pale Lager            |      12|
-| Devil’s Cup         |    2265|  0.066|   NA|        178| American Pale Ale (APA)        |      12|
+| Devil's Cup         |    2265|  0.066|   NA|        178| American Pale Ale (APA)        |      12|
 | Rise of the Phoenix |    2264|  0.071|   NA|        178| American IPA                   |      12|
 | Sinister            |    2263|  0.090|   NA|        178| American Double / Imperial IPA |      12|
 | Sex and Candy       |    2262|  0.075|   NA|        178| American IPA                   |      12|
@@ -65,7 +70,7 @@ knitr::kable(head(Breweries))
 |----------:|:--------------------------|:--------------|:-------------|
 |          1| NorthGate Brewing         | Minneapolis   | MN           |
 |          2| Against the Grain Brewery | Louisville    | KY           |
-|          3| Jack’s Abby Craft Lagers  | Framingham    | MA           |
+|          3| Jack's Abby Craft Lagers  | Framingham    | MA           |
 |          4| Mike Hess Brewing Company | San Diego     | CA           |
 |          5| Fort Point Beer Company   | San Francisco | CA           |
 |          6| COAST Brewing Company     | Charleston    | SC           |
@@ -149,8 +154,8 @@ knitr::kable(rbind(head(BeerBreweries),tail(BeerBreweries)))
 |      |  BreweryID| BeerName                  |  BeerID|    ABV|  IBU| BeerStyle                           |  Ounces| BreweryName                   | BreweryCity   | BreweryState |
 |------|----------:|:--------------------------|-------:|------:|----:|:------------------------------------|-------:|:------------------------------|:--------------|:-------------|
 | 1    |          1| Get Together              |    2692|  0.045|   50| American IPA                        |      16| NorthGate Brewing             | Minneapolis   | MN           |
-| 2    |          1| Maggie’s Leap             |    2691|  0.049|   26| Milk / Sweet Stout                  |      16| NorthGate Brewing             | Minneapolis   | MN           |
-| 3    |          1| Wall’s End                |    2690|  0.048|   19| English Brown Ale                   |      16| NorthGate Brewing             | Minneapolis   | MN           |
+| 2    |          1| Maggie's Leap             |    2691|  0.049|   26| Milk / Sweet Stout                  |      16| NorthGate Brewing             | Minneapolis   | MN           |
+| 3    |          1| Wall's End                |    2690|  0.048|   19| English Brown Ale                   |      16| NorthGate Brewing             | Minneapolis   | MN           |
 | 4    |          1| Pumpion                   |    2689|  0.060|   38| Pumpkin Ale                         |      16| NorthGate Brewing             | Minneapolis   | MN           |
 | 5    |          1| Stronghold                |    2688|  0.060|   25| American Porter                     |      16| NorthGate Brewing             | Minneapolis   | MN           |
 | 6    |          1| Parapet ESB               |    2687|  0.056|   47| Extra Special / Strong Bitter (ESB) |      16| NorthGate Brewing             | Minneapolis   | MN           |
@@ -161,7 +166,7 @@ knitr::kable(rbind(head(BeerBreweries),tail(BeerBreweries)))
 | 2409 |        557| Porkslap Pale Ale         |      49|  0.043|   NA| American Pale Ale (APA)             |      12| Butternuts Beer and Ale       | Garrattsville | NY           |
 | 2410 |        558| Urban Wilderness Pale Ale |      30|  0.049|   NA| English Pale Ale                    |      12| Sleeping Lady Brewing Company | Anchorage     | AK           |
 
-3. Report the number of NA’s in each column.
+3. Report the number of NA's in each column.
 --------------------------------------------
 
 ``` r
@@ -170,7 +175,7 @@ knitr::kable(rbind(head(BeerBreweries),tail(BeerBreweries)))
 kable(sapply(data.frame(sapply(BeerBreweries, is.na)),sum),col.names="Number of NA's")
 ```
 
-|              |  Number of NA’s|
+|              |  Number of NA's|
 |--------------|---------------:|
 | BreweryID    |               0|
 | BeerName     |               0|
@@ -199,7 +204,7 @@ ABVbyState <- tapply(ABVwoNA$ABV, ABVwoNA$BreweryState, median)
 ## Displying bar char of median alcohol content by state
 
 par(las=2)
-barplot(ABVbyState, main="Median Alcohol Content by State", horiz=TRUE, xlab="Median Alcohol Content", ylab="State", cex.names=0.4)
+barplot(sort(ABVbyState), main="Median Alcohol Content by State", horiz=TRUE, xlab="Median Alcohol Content", ylab="State", cex.names=0.4, col=topo.colors(nrow(ABVbyState)))
 ```
 
 ![](CaseStudy1_files/figure-markdown_github/unnamed-chunk-7-1.png)
@@ -218,7 +223,7 @@ IBUbyState <- tapply(IBUwoNA$IBU, IBUwoNA$BreweryState, median)
 ## Displying bar char of international bitternes unit by state
 
 par(las=2)
-barplot(IBUbyState, main="Median International Bitteness Unit by State", horiz=TRUE, xlab="Median International Bitterness Unit", ylab="State", cex.names=0.4)
+barplot(sort(IBUbyState), main="Median International Bitteness Unit by State", horiz=TRUE, xlab="Median International Bitterness Unit", ylab="State", cex.names=0.4, col=topo.colors(nrow(IBUbyState)))
 ```
 
 ![](CaseStudy1_files/figure-markdown_github/unnamed-chunk-8-1.png)
@@ -260,14 +265,14 @@ ME
 kable(rbind(summary(ABVwoNA$ABV)))
 ```
 
-|   Min.|  1st Qu.|  Median|     Mean|  3rd Qu.|   Max.|
-|------:|--------:|-------:|--------:|--------:|------:|
-|  0.001|     0.05|   0.056|  0.05977|    0.067|  0.128|
+|   Min.|  1st Qu.|  Median|       Mean|  3rd Qu.|   Max.|
+|------:|--------:|-------:|----------:|--------:|------:|
+|  0.001|     0.05|   0.056|  0.0597734|    0.067|  0.128|
 
 7. Is there an apparent relationship between the bitterness of the beer and its alcoholic content? Draw a scatter plot.
 -----------------------------------------------------------------------------------------------------------------------
 
-#### As can be observed in the figure below…
+#### As can be observed in the figure below...
 
 ``` r
 ## Tidying up BeerBrewery data frame
@@ -277,7 +282,11 @@ BBnoNA <- ABVwoNA[-which(is.na(ABVwoNA$IBU)),]
 ## Loading ggplot2 to draw graphics
 
 library(ggplot2)
+```
 
+    ## Warning: package 'ggplot2' was built under R version 3.4.3
+
+``` r
 ## Displaying IBU vs. ABV scatter plot
 
 ggplot(BBnoNA, aes(x=IBU,y=ABV))+geom_point()+ggtitle("Bitterness of Beer vs. Alcoholic Content")

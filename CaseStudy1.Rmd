@@ -1,6 +1,6 @@
 ---
-title: "CaseStudy1"
-author: "Jonathan Flores"
+title: "MSDS 6306 - Case Study 1"
+author: "R People: Jonathan Flores, Melissa Luzardo, Randy Park"
 date: "February 12, 2018"
 output: 
   md_document:
@@ -110,7 +110,7 @@ ABVbyState <- tapply(ABVwoNA$ABV, ABVwoNA$BreweryState, median)
 ## Displying bar char of median alcohol content by state
 
 par(las=2)
-barplot(ABVbyState, main="Median Alcohol Content by State", horiz=TRUE, xlab="Median Alcohol Content", ylab="State", cex.names=0.4)
+barplot(sort(ABVbyState), main="Median Alcohol Content by State", horiz=TRUE, xlab="Median Alcohol Content", ylab="State", cex.names=0.4, col=topo.colors(nrow(ABVbyState)))
 ```
 
 ``` {r echo=TRUE, results='asis', fig.height = 10, fig.width = 10}
@@ -127,8 +127,7 @@ IBUbyState <- tapply(IBUwoNA$IBU, IBUwoNA$BreweryState, median)
 ## Displying bar char of international bitternes unit by state
 
 par(las=2)
-barplot(IBUbyState, main="Median International Bitteness Unit by State", horiz=TRUE, xlab="Median International Bitterness Unit", ylab="State", cex.names=0.4)
-
+barplot(sort(IBUbyState), main="Median International Bitteness Unit by State", horiz=TRUE, xlab="Median International Bitterness Unit", ylab="State", cex.names=0.4, col=topo.colors(nrow(IBUbyState)))
 ```
 
 
