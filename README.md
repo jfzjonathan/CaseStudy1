@@ -1,19 +1,20 @@
-# MSDS6306 Case Study 1
+# MSDS6306 Case Study 1 - Background
 
-TODO: __ This is to present the report on relationship betwwen bitterness of the beer and its aocoholic content plus the breakdown of manufacturing at each US state
+"New Brewery Inc" commissioned their marketing department with the evaluation of the US craft beer and brewery market for the launching of their new product "Better Beer".  Also, this includes the report on a relationship betwwen bitterness of the beer and its aocoholic content plus the breakdown of manufacturing at each US state.
 
-## Purpose of the research
 
-TODO: ___
 
 ## About Research Data
 
-TODO: _____ 2410 US craft beers and breweries coming from 558 US breweries
+To perform this study, the marketing department data scientist relied on the "Beers" and "Breweries" datasets provided by their marketing research counterpart and focus on specific points of interests delineated by the companies upper management. 
 
 
 ## Authors
 
-R People company
+Melissa Luzardo
+Jonathan Flores
+Randy Park
+
 
 ## Acknowledgments
 
