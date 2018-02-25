@@ -236,25 +236,20 @@ barplot(sort(IBUbyState), main="Median International Bitteness Unit by State", h
 ``` r
 ## Display which state has the maximun ABV beer
 
-cat(names(ABVbyState[which(ABVbyState==max(ABVbyState))]))
+cat(as.character(ABVwoNA[which(ABVwoNA$ABV==max(ABVwoNA$ABV)),"BreweryState"]))
 ```
 
-DC KY
+CO
 
 #### and the state with the most bitter beer is
 
 ``` r
-## Tidy data for IBU
+## Display which state has the maximun IBU beer
 
-IBUbyState <- IBUbyState[-which(is.na(IBUbyState))]
-
-
-## Display which state has the most IBU beer
-
-cat(names(IBUbyState[which(IBUbyState==max(IBUbyState))]))
+cat(as.character(IBUwoNA[which(IBUwoNA$IBU==max(IBUwoNA$IBU)),"BreweryState"]))
 ```
 
-ME
+OR
 
 6. Summary statistics for the ABV variable.
 -------------------------------------------
