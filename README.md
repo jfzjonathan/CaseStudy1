@@ -1,6 +1,6 @@
 # MSDS6306 Case Study 1 - Background
 
-"New Brewery Inc" commissioned their marketing department with the evaluation of the US craft beer and brewery market for the launching of their new product "Better Beer".  Also, this includes the report on a relationship betwwen bitterness of the beer and its aocoholic content plus the breakdown of manufacturing at each US state.
+"New Brewery Inc" commissioned their marketing department with the evaluation of the US craft beer and brewery market for the launching of their new product "Better Beer".  Also, this includes the report on a relationship betwwen bitterness of the beer and its alcoholic content plus the breakdown of manufacturing at each US state.
 
 
 
