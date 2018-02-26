@@ -284,9 +284,12 @@ library(ggplot2)
     ## Warning: package 'ggplot2' was built under R version 3.4.3
 
 ``` r
+library(devtools)
+
 ## Displaying IBU vs. ABV scatter plot
 
-ggplot(BBnoNA, aes(x=IBU,y=ABV))+geom_point()+ggtitle("Bitterness of Beer vs. Alcoholic Content")
+ggplot(BBnoNA, aes(x=IBU,y=ABV))+geom_point(color='blue')+ggtitle("Bitterness of Beer vs. Alcoholic Content")+ 
+  geom_smooth(method = "lm", se = FALSE, color="red") 
 ```
 
 ![](CaseStudy1_files/figure-markdown_github/unnamed-chunk-12-1.png)
@@ -294,7 +297,8 @@ ggplot(BBnoNA, aes(x=IBU,y=ABV))+geom_point()+ggtitle("Bitterness of Beer vs. Al
 ``` r
 ## Scatter Plot Analysis
 ##
-## The scatter plots indicate a positive direct relationship between IBU and ABV.  The simple linear regression can be made.
+## The scatter plots indicate a positive direct relationship between IBU and ABV.  
+## The simple linear regression is also applied.
 ##
-## ------------------------------------------------------------------------------------------------------------------------
+## -------------------------------------- END -----------------------------------------------
 ```

@@ -181,14 +181,18 @@ BBnoNA <- ABVwoNA[-which(is.na(ABVwoNA$IBU)),]
 ## Loading ggplot2 to draw graphics
 
 library(ggplot2)
+library(devtools)
 
 ## Displaying IBU vs. ABV scatter plot
 
-ggplot(BBnoNA, aes(x=IBU,y=ABV))+geom_point()+ggtitle("Bitterness of Beer vs. Alcoholic Content")
+ggplot(BBnoNA, aes(x=IBU,y=ABV))+geom_point(color='blue')+ggtitle("Bitterness of Beer vs. Alcoholic Content")+ 
+  geom_smooth(method = "lm", se = FALSE, color="red") 
+
 
 ## Scatter Plot Analysis
 ##
-## The scatter plots indicate a positive direct relationship between IBU and ABV.  The simple linear regression can be made.
+## The scatter plots indicate a positive direct relationship between IBU and ABV.  
+## The simple linear regression is also applied.
 ##
-## ------------------------------------------------------------------------------------------------------------------------
+## -------------------------------------- END -----------------------------------------------
 ```
