@@ -11,8 +11,8 @@ To perform this study, the marketing department data scientist relied on the "Be
 
 Data set                     | ABout Data set 
 --------------------------- | ---------------
-Beers.csv                    | Beer
-Breweries.csv                | Breweries
+Beers.csv                    | Beers with ABV (Alchohol by volume), IBU (International Bitterness Units), Brewery, Style, Ounces
+Breweries.csv                | Breweries with Brewery Name, City, State information
 
 
 ## Instructions
