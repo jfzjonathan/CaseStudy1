@@ -204,7 +204,8 @@ ABVbyState <- tapply(ABVwoNA$ABV, ABVwoNA$BreweryState, median)
 ## Displying bar char of median alcohol content by state
 
 par(las=2)
-barplot(sort(ABVbyState), main="Median Alcohol Content by State", horiz=TRUE, xlab="Median Alcohol Content", ylab="State", cex.names=0.4, col=topo.colors(nrow(ABVbyState)))
+abv_bar <- barplot(sort(ABVbyState), main="Median Alcohol Content by State", horiz=TRUE, xlab="Median Alcohol Content", ylab="State", cex.names=0.4, col=topo.colors(nrow(ABVbyState)))
+text(y = abv_bar, x=sort(ABVbyState), label=sort(ABVbyState), col="red")
 ```
 
 ![](CaseStudy1_files/figure-markdown_github/unnamed-chunk-7-1.png)
@@ -223,7 +224,8 @@ IBUbyState <- tapply(IBUwoNA$IBU, IBUwoNA$BreweryState, median)
 ## Displying bar char of international bitternes unit by state
 
 par(las=2)
-barplot(sort(IBUbyState), main="Median International Bitteness Unit by State", horiz=TRUE, xlab="Median International Bitterness Unit", ylab="State", cex.names=0.4, col=topo.colors(nrow(IBUbyState)))
+ibu_bar <- barplot(sort(IBUbyState), main="Median International Bitteness Unit by State", horiz=TRUE, xlab="Median International Bitterness Unit", ylab="State", cex.names=0.4, col=topo.colors(nrow(IBUbyState)))
+text(y = ibu_bar, x=sort(IBUbyState), label=sort(IBUbyState), col="red")
 ```
 
 ![](CaseStudy1_files/figure-markdown_github/unnamed-chunk-8-1.png)
@@ -288,3 +290,11 @@ ggplot(BBnoNA, aes(x=IBU,y=ABV))+geom_point()+ggtitle("Bitterness of Beer vs. Al
 ```
 
 ![](CaseStudy1_files/figure-markdown_github/unnamed-chunk-12-1.png)
+
+``` r
+## Scatter Plot Analysis
+##
+## The scatter plots indicate a positive direct relationship between IBU and ABV.  The simple linear regression can be made.
+##
+## ------------------------------------------------------------------------------------------------------------------------
+```
