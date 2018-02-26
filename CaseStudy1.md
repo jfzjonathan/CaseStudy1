@@ -297,14 +297,6 @@ ggplot(BBnoNA, aes(x=IBU,y=ABV))+geom_point(color='blue')+ggtitle("Bitterness of
 Scatter Plot Analysis
 ---------------------
 
---------------------------------------------------------------------------------
---------------------------------------------------------------------------------
+### The scatter plots indicate a positive direct relationship between IBU and ABV.
 
-The scatter plots indicate a positive direct relationship between IBU and ABV.
-------------------------------------------------------------------------------
-
-The simple linear regression is also applied.
----------------------------------------------
-
--------------------------------------- END -------------------------------------
---------------------------------------------------------------------------------
+### The simple linear regression is also applied.
