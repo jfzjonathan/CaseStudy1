@@ -8,6 +8,13 @@
 
 To perform this study, the marketing department data scientist relied on the "Beers" and "Breweries" datasets provided by their marketing research counterpart and focus on specific points of interests delineated by the companies upper management. 
 
+
+Data set                     | ABout Data set 
+--------------------------- | ---------------
+Beers.csv                    | Beer
+Breweries.csv                | Breweries
+
+
 ## Instructions
 
 Please see the "CaseStudy1.md" file with all questions related to the assignment. This file contains the code and the answers to every single question in the assignment. Also, for further detail, please see the power point presentation "Case Study 1.pptx" as it explains the information using different business analytics techniques. Enjoy!
