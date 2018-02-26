@@ -11,9 +11,7 @@ To perform this study, the marketing department data scientist relied on the "Be
 
 ## Authors
 
-Melissa Luzardo
-Jonathan Flores
-Randy Park
+Melissa Luzardo, Jonathan Flores, Randy Park
 
 
 ## Acknowledgments
